@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.main{text-align: center;margin-top: 50px;border:1px solid #b50005;border-radius: 5px;padding:5em;}
+		.inFa{display:inline-block;position: relative;}
+		.myInput{padding:0.5em 1em;border:1px solid black;border-radius: 5px;outline: none;font-size: 18px;}
+		.myInput:focus{border-color: green;}
+		.myInputLabel{
+			pointer-events: none;
+			position: absolute;
+			top:0;
+			font-size: 18px;
+			line-height: 2em;
+			left:1em;
+			color:#aaa}
+		.labelMove{			
+			top:-2em;
+			color:#333;
+			transform:scale(0.9) rotate(360deg);
+			transition:top .6s, transform 0.6s;	
+			-moz-transition:top .6s, transform 0.6s;
+			-webkit-transition:top .6s, transform 0.6s;
+			-ms-transition:top .6s, transform 0.6s;
+			-o-transition:top .6s, transform 0.6s;
+			transition-duration:top .6s, transform 0.6s;}
+		.labelLeft{			
+			left:-3em;
+			color:#333;
+			transition:left .6s, color .6s;	
+			-moz-transition:left .6s, color .6s;
+			-webkit-transition:left .6s, color .6s;
+			-ms-transition:left .6s, color .6s;			
+			-o-transition:left .6s, color .6s;
+			transition-duration:left .6s, color .6s;}
+		.labelLeft0{
+			left:1em;transition:left 0.6s;}
+		.moveHome{
+			top:0;
+			transition:top 0.6s;}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div>
+			<div class='inFa'>
+			<div> </div>
+			<span class="myInputLabel">账号</span>
+			<input class="myInput" type="text">
+		</div>
+		</div>
+		<br>
+		<div>
+			<div class='inFa'>
+			<div> </div>
+			<span class="myInputLabel">密码</span>
+			<input class="myInput" type="text">
+		</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var txt = document.getElementsByClassName('myInputLabel');
+	var input = document.getElementsByClassName('myInput');
+	input[0].onfocus = function(e){
+		txt[0].setAttribute('class','myInputLabel labelMove')
+	}
+	input[0].onblur = function(e){
+		input[0].value == '' ? txt[0].setAttribute('class','myInputLabel moveHome') : txt[0].setAttribute('class','myInputLabel labelMove')
+	}
+	input[1].onfocus = function(e){
+		txt[1].setAttribute('class','myInputLabel labelLeft')
+	}
+	input[1].onblur = function(e){
+		input[1].value == '' ? txt[1].setAttribute('class','myInputLabel labelLeft0') : txt[1].setAttribute('class','myInputLabel labelLeft')
+	}
+</script>
