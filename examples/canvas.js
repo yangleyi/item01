@@ -13,7 +13,7 @@ var Ball = function(){
 	this.draw = function(){
 		ctx.beginPath();
 		ctx.fillStyle = this.bgc;
-		ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+		ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); 
 		ctx.closePath();
 		ctx.fill();
 	};
@@ -27,11 +27,17 @@ var draw = function(){
 	for(var ind in store){
 		store[ind].x += store[ind].moveX;
 		store[ind].y += store[ind].moveY;
-		if((store[ind].x - store[ind].r) > canvas.width){
-			store[ind].x = -store[ind].r
+		if((store[ind].x - store[ind].r) > canvas.width){// 移动到右边界面
+			store[ind].x = -store[ind].r;
 		}
-		if((store[ind].y - store[ind].r) > canvas.height){
-			store[ind].y = -store[ind].r
+		if((store[ind].x + store[ind].r) < 0){// 移动到左边界
+			store[ind].x = -store[ind].r;
+		}
+		if((store[ind].y - store[ind].r) > canvas.height){// 移动到下边界
+			store[ind].y = -store[ind].r;
+		}
+		if((store[ind].y + store[ind].r) < 0){// 移动到上边界
+			store[ind].y = -store[ind].r;
 		}
 		store[ind].draw();
 	}

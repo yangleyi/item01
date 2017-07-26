@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		div,span,p{
+			width: 140px;
+			height: 140px;
+			margin:5px;
+			background: #aaa;
+			border:#000 1px solid;
+			float:left;
+			font-size: 17px;
+			font-family: Verdana;
+		}
+		div .mini{
+			width: 55px;
+			height: 55px;
+			background-color: #aaa;
+			font-size: 12px;
+		}
+		div .hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="one" class="one">
+		id 为one.class为one的div
+		<div class="mini">class 为mini</div>
+	</div>
+	<div class="one" id="two" title="test">
+		id为two.class为one.title为test的div
+		<div class="mini" title="other">class为mini.title为other</div>
+		<div class="mini" title="test">class为mini.title为test</div>
+	</div>
+	<div class="one">
+		<div class="mini">class为mini</div>
+		<div class="mini">class为mini</div>
+		<div class="mini">class为mini</div>
+		<div class="mini"></div>
+	</div>
+	<div class="one">
+		<div class="mini">class为mini</div>
+		<div class="mini">class为mini</div>
+		<div class="mini">class为mini</div>
+		<div class="mini" title="tesst">class为mini.title为tesst</div>
+	</div>
+	<div style="display: none" class="none">
+		style的display为"one"的div
+	</div>
+	<div class="hide">class为‘hide’的div</div>
+	<div>
+		包含input的type为‘hidden’的div<input type="hidden" size="8" name="">
+	</div>
+	<span id="mover">正在执行动画的span元素</span>
+	<h1>this is h1</h1>
+	<h3>this is h3</h3>
+	<h4>this is h4</h4>
+	<h5>this is h5</h5>
+	<h6>this is h6</h6>
+	<p>this is p</p>
+	<a href="javascript:">this is a ele</a>
+	<input type="text" name="" autofocus="true">
+</body>
+</html>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	// $('#one').css('background','#bbffaa');
+	$('.mini').css('background','#bbffaa');
+	$('#one ~ div').css('background','#654321')
+	// $('#two').nexAll('div').css('background','#650005')
+	$('#one').nextAll('div').css('color','orange')
+	$('#one').siblings('div').css('border','3px solid green')
+	$('div:first').css('border-radius','10px')
+	$('div:last').css('border-bottom-right-radius','20px')
+	$('div:not(.one)').css('border-top','2px solid magenta')
+	$('div:eq(2)').css('border-left','4px solid red')
+	$('div:lt(5)').css('border-bottom','3px solid yellow')
+	$(':header').css('color','green')
+	$(':focus').css('background','#bbffaa')
+</script>
