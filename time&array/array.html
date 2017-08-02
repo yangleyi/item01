@@ -1,0 +1,31 @@
+<script>
+// 获取一个字符串并返回一个包含各个字符以及出现的次数的对象
+	function fd(str){
+		var obj = {};
+		for(var i in str){
+			if(!obj[str[i]]){
+				obj[str[i]] = 1;
+			}else{
+				obj[str[i]] += 1;
+			}
+		}
+		return obj;
+	}
+	function maxObjVal(obj){
+		var obj = obj;
+		var max_val = -1;
+		var max_key = '';
+		var key;
+		for(key in obj){
+			if(max_val < obj[key]){
+				max_val = obj[key];
+				max_key = key;
+				console.log(max_key)
+			}
+		}
+		return {max_name: max_key,max_value:max_val};
+	}
+	var obj = fd('abdcsasdgafgasdqwerr');
+	var max_obj = maxObjVal(obj)
+	console.log(max_obj)
+</script>

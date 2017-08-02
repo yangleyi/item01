@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>定时器-初级</title>
+	<style type="text/css">
+		h1{text-align: center;color:#999;}
+		b{color:hsl(280,40%,60%);}
+	</style>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	function time(){
+		var time = new Date().getTime();
+		var time2 = new Date(2018,0,0).getTime();
+		var tim = time2 - time;
+		var strd = 1000*60*60*24;
+		var d = parseInt(tim/strd)<10 ? "0"+parseInt(tim/strd) : parseInt(tim/strd);
+		var h = parseInt((tim%strd)/(1000*60*60)) < 10 ? "0"+parseInt((tim%strd)/(1000*60*60)) : parseInt((tim%strd)/(1000*60*60));
+		var m = parseInt((tim/(1000*60)-d*24*60-h*60)) < 10 ? "0"+parseInt((tim/(1000*60)-d*24*60-h*60)) : parseInt((tim/(1000*60)-d*24*60-h*60));
+		var s = parseInt((tim/1000-d*60*60*24-h*60*60-m*60)) < 10 ? "0"+parseInt((tim/1000-d*60*60*24-h*60*60-m*60)) : parseInt((tim/1000-d*60*60*24-h*60*60-m*60));
+		return {d:d,h:h,m:m,s:s}
+	}
+	function getTime(){
+		var tim = time();
+		document.getElementsByTagName('body')[0].innerHTML = "<h1>2017年还有<b>"+tim.d+"</b>天<b>"+tim.h+"</b>小时<b>"+tim.m+"</b>分钟<b>"+tim.s+"</b>秒 。</h1>";
+		requestAnimationFrame(getTime)
+	}
+	getTime()
+</script>

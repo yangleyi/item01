@@ -47,4 +47,10 @@ var render = function(){
 	draw();
 	requestAnimationFrame(render);
 };
-render()
+render();
+// function getMouse(e){
+// 	console.log(e.clientX)
+// }
+canvas.onmousemove = function(e){
+	console.log(e.clientX)
+}
