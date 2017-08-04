@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
+		body{transition: all 1s;}
 		.main{text-align: center;margin-top: 50px;border:1px solid #b50005;border-radius: 5px;padding:5em;}
 		.inFa{display:inline-block;position: relative;}
 		.myInput{padding:0.5em 1em;border:1px solid black;border-radius: 5px;outline: none;font-size: 18px;}
@@ -40,6 +41,8 @@
 		.moveHome{
 			top:0;
 			transition:top 0.6s;}
+		.center{text-align: center;}
+		#input,#btn{padding:0.6em 1em;font-size: 22px;border-radius: 5px;border:1px solid #888;}
 
 	</style>
 </head>
@@ -61,6 +64,9 @@
 		</div>
 		</div>
 	</div>
+	<div class="center">
+		<input id="input" placeholder="输入1或2点击按钮"><button id="btn">旋转</button>
+	</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -77,5 +83,22 @@
 	}
 	input[1].onblur = function(e){
 		input[1].value == '' ? txt[1].setAttribute('class','myInputLabel labelLeft0') : txt[1].setAttribute('class','myInputLabel labelLeft')
+	}
+	//----------------界面旋转动画-----------------
+	var btn = document.querySelector('#btn');
+	btn.addEventListener('click', rotateY);
+	function rotateY(){
+	  var input = document.querySelector('#input');
+	  var body = document.querySelector('body');
+	  var cur_rot = body.style.transform;
+	  var val = input.value;
+	  var reg = /[^0-9]/ig;
+	  var num = Number(cur_rot.replace(reg, ''));
+	  if(val == '1'){
+	  	body.style.transform = 'rotateZ('+(num+360)+'deg)'
+	  }else if(val == '2'){
+	  	body.style.transform = 'rotateY('+(num+360)+'deg)'
+	  }
+	  console.log(num)
 	}
 </script>
